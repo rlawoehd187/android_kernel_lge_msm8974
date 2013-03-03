@@ -11,6 +11,10 @@
 #ifndef _LINUX_F2FS_H
 #define _LINUX_F2FS_H
 
+#ifdef CONFIG_F2FS_FS_ENCRYPTION
+#undef CONFIG_F2FS_FS_ENCRYPTION
+#endif
+
 #include <linux/types.h>
 #include <linux/page-flags.h>
 #include <linux/buffer_head.h>
@@ -152,9 +156,9 @@ static inline void inode_unlock(struct inode *inode)
  *
  * Please refer to the comment for waitqueue_active.
  */
-static inline bool wq_has_sleeper(wait_queue_head_t *wq) 
+static inline bool wq_has_sleeper(wait_queue_head_t *wq)
 {
-	/*   
+	/*
 	 * We need to be sure we are in sync with the
 	 * add_wait_queue modifications to the wait queue.
 	 *
