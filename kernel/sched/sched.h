@@ -994,8 +994,6 @@ static inline void dec_nr_running(struct rq *rq)
 	rq->nr_running--;
 #ifdef CONFIG_INTELLI_HOTPLUG
 	write_seqcount_end(&nr_stats->ave_seqcnt);
-#endif#ifdef CONFIG_INTELLI_HOTPLUG
-	write_seqcount_end(&nr_stats->ave_seqcnt);
 #endif
 }
 
